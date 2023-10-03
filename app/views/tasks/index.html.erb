@@ -1,8 +1,8 @@
 <section class="vh-100" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-lg-9 col-xl-7">
-        <div class="card rounded-3">
+      <div class="col col-lg-9 col-xl-9">
+        <div class="card rounded-4">
           <div class="card-body p-4">
 
             <%= content_tag :div, class: "alert alert-info", id: "notice" do -%>
@@ -20,15 +20,17 @@
                   <th scope="col">No.</th>
                   <th scope="col">Todo item</th>
                   <th scope="col">Description</th>
+                  <th scope="col">Deadline</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <% @tasks.each do |task| %>
+                <% @tasks.each_with_index do |task, index| %>
                   <tr>
-                    <th scope="row">[Here should be No.]</th>
+                    <th scope="row"><%= index + 1 %></th>
                     <td><%= task.title %></td>
                     <td><%= task.description %></td>
+                    <td><%= task.deadline %></td>
                     <td>
                       <%= button_to "Delete task", task, method: :delete, class: "btn btn-danger" %>
                     </td>
